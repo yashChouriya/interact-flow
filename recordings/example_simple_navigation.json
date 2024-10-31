@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "timestamp": "2024-10-31T10:00:00",
+  "events": [
+    {
+      "type": "mouse_move",
+      "timestamp": 0.0,
+      "x": 100,
+      "y": 100
+    },
+    {
+      "type": "mouse_click",
+      "timestamp": 1.0,
+      "x": 100,
+      "y": 100,
+      "button": "Button.left",
+      "pressed": true
+    },
+    {
+      "type": "mouse_click",
+      "timestamp": 1.2,
+      "x": 100,
+      "y": 100,
+      "button": "Button.left",
+      "pressed": false
+    },
+    {
+      "type": "keyboard_press",
+      "timestamp": 2.0,
+      "key": "Key.shift"
+    },
+    {
+      "type": "keyboard_press",
+      "timestamp": 2.1,
+      "key": "'H'"
+    },
+    {
+      "type": "keyboard_release",
+      "timestamp": 2.2,
+      "key": "'H'"
+    },
+    {
+      "type": "keyboard_release",
+      "timestamp": 2.3,
+      "key": "Key.shift"
+    },
+    {
+      "type": "keyboard_press",
+      "timestamp": 2.4,
+      "key": "'e'"
+    },
+    {
+      "type": "keyboard_release",
+      "timestamp": 2.5,
+      "key": "'e'"
+    },
+    {
+      "type": "keyboard_press",
+      "timestamp": 2.6,
+      "key": "'l'"
+    },
+    {
+      "type": "keyboard_release",
+      "timestamp": 2.7,
+      "key": "'l'"
+    },
+    {
+      "type": "keyboard_press",
+      "timestamp": 2.8,
+      "key": "'l'"
+    },
+    {
+      "type": "keyboard_release",
+      "timestamp": 2.9,
+      "key": "'l'"
+    },
+    {
+      "type": "keyboard_press",
+      "timestamp": 3.0,
+      "key": "'o'"
+    },
+    {
+      "type": "keyboard_release",
+      "timestamp": 3.1,
+      "key": "'o'"
+    },
+    {
+      "type": "keyboard_press",
+      "timestamp": 3.2,
+      "key": "Key.enter"
+    },
+    {
+      "type": "keyboard_release",
+      "timestamp": 3.3,
+      "key": "Key.enter"
+    }
+  ]
+}
