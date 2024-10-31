@@ -1,5 +1,11 @@
 from setuptools import setup, find_packages
+import os
 
+# Read version from version.py
+with open(os.path.join("src", "version.py"), "r", encoding="utf-8") as f:
+    exec(f.read())
+
+# Read README for long description
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
@@ -7,7 +13,7 @@ requirements = ["pynput>=1.7.6", "python-xlib>=0.33"]
 
 setup(
     name="interactflow",
-    version="1.0.0",
+    version=__version__,
     author="InteractFlow Team",
     author_email="yashchouriya131+github@gmail.com",
     description="A powerful tool for recording and replaying user interactions",
