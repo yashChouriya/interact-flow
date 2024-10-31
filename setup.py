@@ -3,10 +3,7 @@ from setuptools import setup, find_packages
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-requirements = [
-    "pynput>=1.7.6",
-    "python-xlib>=0.33"
-]
+requirements = ["pynput>=1.7.6", "python-xlib>=0.33"]
 
 setup(
     name="interactflow",
@@ -22,7 +19,9 @@ setup(
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Testing",
-        "Topic :: System :: Recording",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: System :: Monitoring",
+        "Topic :: Utilities",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
