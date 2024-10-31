@@ -1,6 +1,10 @@
 # InteractFlow
 
-InteractFlow is a powerful Python-based tool that allows you to record and replay user interactions with high precision. It captures mouse movements, clicks, keyboard inputs, and scroll actions, making it perfect for creating automated workflows, testing scenarios, or demonstrating user interfaces.
+![Python Version](https://img.shields.io/badge/python-3.6%2B-blue)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PyPI version](https://badge.fury.io/py/interactflow.svg)](https://badge.fury.io/py/interactflow)
+
+InteractFlow is a powerful Python tool designed to record and replay user interactions with high precision. Perfect for creating automated workflows, testing scenarios, or demonstrating user interfaces, it captures every detail of user interaction including mouse movements, clicks, keyboard inputs, and scroll actions.
 
 ## Features
 
@@ -10,60 +14,93 @@ InteractFlow is a powerful Python-based tool that allows you to record and repla
 - ⚡ **Performance Optimized**: Smart filtering of redundant mouse movements
 - 🛡️ **Graceful Handling**: Clean shutdown and save functionality
 
-## Installation
+## Quick Start
 
-1. Clone the repository:
+### Installation
 
 ```bash
-git clone git@github.com:yashChouriya/interact-flow.git
-cd interact-flow
+pip install interactflow
+```
+
+### Alternative: Install from Source
+
+1. Clone the repository:
+```bash
+git clone git@github.com:yashChouriya/interactflow.git
+cd interactflow
 ```
 
 2. Create and activate a virtual environment:
-
 ```bash
 python -m venv env
 source env/bin/activate  # On Windows: .\env\Scripts\activate
 ```
 
-3. Install dependencies:
-
+3. Install in development mode:
 ```bash
-pip install -r requirements.txt
+pip install -e .
 ```
 
-## Usage
+## Basic Usage
 
 ### Recording User Actions
 
-To start recording your actions:
-
+Start recording your actions:
 ```bash
-python main.py record
+interactflow record
 ```
-
 Press `Ctrl+C` to stop recording. The recording will be automatically saved in the `recordings` directory.
 
 ### Playing Back Recordings
 
-To play a recorded session:
-
+Play a recorded session:
 ```bash
-python main.py play recordings/your_recording.json
+interactflow play recordings/your_recording.json
 ```
 
-You can adjust playback speed using the `--speed` parameter:
-
+Adjust playback speed:
 ```bash
-python main.py play recordings/your_recording.json --speed 2.0  # Play at 2x speed
+interactflow play recordings/your_recording.json --speed 2.0  # Play at 2x speed
 ```
 
 ### Listing Available Recordings
 
-To see all available recordings:
-
+View all recordings:
 ```bash
-python main.py list
+interactflow list
+```
+
+## Advanced Usage
+
+### Recording Module
+
+```python
+from interactflow.src.recorder import ActivityRecorder
+
+# Initialize recorder
+recorder = ActivityRecorder()
+
+# Start recording
+recorder.start_recording()
+
+# Stop recording
+recorder.stop_recording()
+
+# Save recording
+recorder.save_recording('my_recording.json')
+```
+
+### Playback Module
+
+```python
+from interactflow.src.player import ActivityPlayer
+
+# Initialize player
+player = ActivityPlayer()
+
+# Load and play recording
+player.load_recording('my_recording.json')
+player.play(speed_multiplier=1.5)  # Play at 1.5x speed
 ```
 
 ## Technical Details
@@ -79,13 +116,18 @@ python main.py list
 ```
 interactflow/
 ├── src/
-│   ├── recorder.py     # Handles recording of user actions
-│   ├── player.py       # Manages playback of recorded actions
-│   └── __init__.py
-├── recordings/         # Directory for stored recordings
-├── main.py            # Command-line interface
-├── requirements.txt    # Project dependencies
-└── README.md          # Documentation
+│   ├── __init__.py
+│   ├── main.py        # CLI interface
+│   ├── recorder.py    # Recording functionality
+│   └── player.py      # Playback functionality
+├── recordings/        # Stored recordings directory
+├── .github/          # GitHub configuration
+│   └── workflows/    # GitHub Actions
+├── requirements.txt  # Project dependencies
+├── setup.py         # Package configuration
+├── LICENSE          # MIT License
+├── CONTRIBUTING.md  # Contribution guidelines
+└── README.md        # This file
 ```
 
 ### Recording Format
@@ -108,21 +150,37 @@ Recordings are stored in JSON format with the following structure:
 }
 ```
 
+### Platform Support
+
+- Linux (Full support)
+- Windows (Full support)
+- macOS (Basic support)
+
 ## Contributing
 
-Contributions are welcome! Feel free to:
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on how to:
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- Report bugs
+- Suggest enhancements
+- Submit pull requests
+- Set up development environment
+
+## Support
+
+For support, questions, or feature requests:
+1. Check the [issues](https://github.com/yashChouriya/interactflow/issues) page
+2. Create a new issue if needed
+3. Join our discussions
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
 - Thanks to the `pynput` library for providing robust input device monitoring
 - Inspired by the need for reliable UI automation tools
+
+---
+
+Made with ❤️ by the InteractFlow Team
