@@ -1,9 +1,11 @@
 # InteractFlow
 
 ![Python Version](https://img.shields.io/badge/python-3.6%2B-blue)
+[![Version](https://img.shields.io/pypi/v/interactflow?color=green&label=version)](https://pypi.org/project/interactflow/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![PyPI version](https://badge.fury.io/py/interactflow.svg)](https://badge.fury.io/py/interactflow)
+[![PyPI Status](https://img.shields.io/pypi/status/interactflow.svg)](https://pypi.org/project/interactflow/)
 [![Upload Python Package](https://github.com/yashChouriya/interactflow/actions/workflows/python-publish.yml/badge.svg)](https://github.com/yashChouriya/interactflow/actions/workflows/python-publish.yml)
+[![Downloads](https://img.shields.io/pypi/dm/interactflow.svg)](https://pypi.org/project/interactflow/)
 
 InteractFlow is a powerful Python tool designed to record and replay user interactions with high precision. Perfect for creating automated workflows, testing scenarios, or demonstrating user interfaces, it captures every detail of user interaction including mouse movements, clicks, keyboard inputs, and scroll actions.
 
