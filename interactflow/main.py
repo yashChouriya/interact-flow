@@ -2,8 +2,8 @@
 import argparse
 import sys
 import signal
-from src.recorder import ActivityRecorder
-from src.player import ActivityPlayer
+from interactflow.recorder import ActivityRecorder
+from interactflow.player import ActivityPlayer
 import logging
 import time
 from pathlib import Path
@@ -15,12 +15,16 @@ logger = logging.getLogger(__name__)
 def signal_handler(signum, frame):
     """Handle interrupt signal"""
     logger.info("\nReceived interrupt signal. Stopping...")
-    if recorder and hasattr(recorder, "recording") and recorder.recording:
-        recorder.stop_recording()
-        filepath = recorder.save_recording()
-        if filepath:
-            logger.info(f"Recording saved to: {filepath}")
-    sys.exit(0)
+    try:
+        if recorder and hasattr(recorder, "recording") and recorder.recording:
+            recorder.stop_recording()
+            filepath = recorder.save_recording()
+            if filepath:
+                logger.info(f"Recording saved to: {filepath}")
+    except Exception as e:
+        logger.error(f"Error while stopping recording: {e}")
+    finally:
+        sys.exit(0)
 
 
 def record_activity():
@@ -58,9 +62,12 @@ def play_recording(filepath, speed=1.0):
 
 def list_recordings():
     """List all available recordings"""
-    recordings_dir = Path(__file__).parent / "recordings"
-    if not recordings_dir.exists():
-        logger.info("No recordings directory found.")
+    recordings_dir = Path.home() / ".interactflow" / "recordings"
+    recordings_dir.mkdir(parents=True, exist_ok=True)
+    
+    recordings = list(recordings_dir.glob("*.json"))
+    if not recordings:
+        logger.info("No recordings found.")
         return
 
     recordings = list(recordings_dir.glob("*.json"))

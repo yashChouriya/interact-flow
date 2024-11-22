@@ -52,18 +52,18 @@ Start recording your actions:
 ```bash
 interactflow record
 ```
-Press `Ctrl+C` to stop recording. The recording will be automatically saved in the `recordings` directory.
+Press `Ctrl+C` to stop recording. The recording will be automatically saved in the `~/.interactflow/recordings` directory.
 
 ### Playing Back Recordings
 
 Play a recorded session:
 ```bash
-interactflow play recordings/your_recording.json
+interactflow play ~/.interactflow/recordings/your_recording.json
 ```
 
 Adjust playback speed:
 ```bash
-interactflow play recordings/your_recording.json --speed 2.0  # Play at 2x speed
+interactflow play ~/.interactflow/recordings/your_recording.json --speed 2.0  # Play at 2x speed
 ```
 
 ### Listing Available Recordings
@@ -78,7 +78,7 @@ interactflow list
 ### Recording Module
 
 ```python
-from interactflow.src.recorder import ActivityRecorder
+from interactflow.recorder import ActivityRecorder
 
 # Initialize recorder
 recorder = ActivityRecorder()
@@ -96,7 +96,7 @@ recorder.save_recording('my_recording.json')
 ### Playback Module
 
 ```python
-from interactflow.src.player import ActivityPlayer
+from interactflow.player import ActivityPlayer
 
 # Initialize player
 player = ActivityPlayer()

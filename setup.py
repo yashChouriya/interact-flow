@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 
 # Read version from version.py
-with open(os.path.join("src", "version.py"), "r", encoding="utf-8") as f:
+with open(os.path.join("interactflow", "version.py"), "r", encoding="utf-8") as f:
     exec(f.read())
 
 # Read README for long description
@@ -40,7 +40,7 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "interactflow=src.main:main",
+            "interactflow=interactflow.main:main",
         ],
     },
 )

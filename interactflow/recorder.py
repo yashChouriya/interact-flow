@@ -17,6 +17,10 @@ class ActivityRecorder:
         self.keyboard_listener = None
         self.last_mouse_position = None
         
+        # Create recordings directory
+        self.recordings_dir = Path.home() / ".interactflow" / "recordings"
+        self.recordings_dir.mkdir(parents=True, exist_ok=True)
+        
     def start_recording(self):
         """Start recording user activity"""
         if self.recording:
@@ -56,6 +60,16 @@ class ActivityRecorder:
             self.mouse_listener.stop()
         if self.keyboard_listener:
             self.keyboard_listener.stop()
+            
+        # Add a final position if we have no events
+        if not self.events:
+            x, y = self.mouse_listener._position_win32() if hasattr(self.mouse_listener, '_position_win32') else (0, 0)
+            self.events.append({
+                'type': 'mouse_move',
+                'timestamp': self._get_timestamp(),
+                'x': x,
+                'y': y
+            })
             
         logger.info("Recording stopped...")
 
@@ -149,9 +163,7 @@ class ActivityRecorder:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             filename = f"recording_{timestamp}.json"
             
-        recordings_dir = Path(__file__).parent.parent / "recordings"
-        recordings_dir.mkdir(exist_ok=True)
-        filepath = recordings_dir / filename
+        filepath = self.recordings_dir / filename
         
         recording_data = {
             'version': '1.0',
@@ -159,8 +171,12 @@ class ActivityRecorder:
             'events': self.events
         }
         
-        with open(filepath, 'w') as f:
-            json.dump(recording_data, f, indent=2)
-            
-        logger.info(f"Recording saved to {filepath}")
-        return filepath
+        try:
+            with open(filepath, 'w') as f:
+                json.dump(recording_data, f, indent=2)
+                
+            logger.info(f"Recording saved to {filepath}")
+            return filepath
+        except Exception as e:
+            logger.error(f"Error saving recording: {e}")
+            return None
